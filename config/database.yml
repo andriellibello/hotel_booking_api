@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: hotel_booking_api_development
+  host: localhost
+  port: 5432
+  username: andrielli_bello
+  password: andri_dev
+
+test:
+  <<: *default
+  database: hotel_booking_api_test
+  host: localhost
+  port: 5432
+  username: andrielli_bello
+  password: andri_dev
+
+production:
+  <<: *default
+  database: hotel_booking_api_production
+  username: hotel_booking_api
+  password: <%= ENV["HOTEL_BOOKING_API_DATABASE_PASSWORD"] %>
